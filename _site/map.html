@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>visualsace</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="/map.html" />
+  
+  
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Lora:700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/syntax.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/whhg.css">
+  <!--[if lt IE 9]>
+    <script src="js/vendor/html5-3.6-respond-1.1.0.min.js"></script>
+  <![endif]-->
+  <link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.css' rel='stylesheet' />
+  <!--[if lte IE 8]>
+    <link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.ie.css' rel='stylesheet' >
+  <![endif]-->
+  <link rel="stylesheet" href="css/MarkerCluster.css" />
+  <link rel="stylesheet" href="css/MarkerCluster.Default.css" />
+  <!--[if lte IE 8]><link rel="stylesheet" href="../dist/MarkerCluster.Default.ie.css" /><![endif]-->
+  <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+ <div class="navbar navbar-fixed-top">    
+      <div class="navbar-inner">
+
+        <!-- <span class="btn menu" data-icon="&#xe001;" aria-hidden="true" data-toggle="collapse" data-target=".nav-collapse"></span> -->
+        <span class="btn menu icon-menu" data-toggle="collapse" data-target=".nav-collapse"></span>
+        
+        
+        <a href="" >
+          <img class="brand" src="img/logo.svg" data-fallback="img/logo.png" alt="visualsace" />
+        </a>
+
+        <div id="menu" class="container navbar-menu-container">
+          <div class="nav-collapse collapse">
+            <ul class="nav nav-pills">
+              <li id="home" ><a href="/">Blog</a></li>
+              <li id="maps"  class='active' ><a href="/map">Cartes</a></li>
+              <li id="about"><a href="#">A Propos</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+
+      </div>
+    </div> <!--/.navbar -->
+
+<div id="pane"> 
+	<div id="map"></div>
+</div>
+<div id="js-page" class="container page-container page-container-right">
+	<!-- <button type="button" id="js-close-page" class="icon-remove-circle close-icon"></button> -->
+	<a id="js-close-page" class="close-icon" href="#">Fermer la page</a>
+	<div class="description">
+		<h1 id='lorem'>Lorem</h1>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sagittis cursus purus, eget interdum justo tristique sit amet. Morbi nunc turpis, ultrices ut dictum non, adipiscing ac augue. Ut iaculis risus purus, sed vehicula velit porttitor interdum. Maecenas ligula arcu, egestas non interdum vel, ultricies in est.</p>
+
+<h2 id='ipsum'>Ipsum</h2>
+
+<p>Mauris dictum blandit tellus et bibendum. Integer sagittis at urna sit amet posuere. Cras at hendrerit augue, ut posuere enim. Nullam cursus tellus ut vulputate tincidunt. Sed nec erat vitae felis hendrerit vestibulum. Etiam vel augue imperdiet, euismod massa non, lacinia ipsum. Etiam interdum non est molestie convallis. Proin varius tellus nec sapien fringilla, in consequat risus tincidunt. Pellentesque laoreet erat ante, ut pellentesque libero tincidunt condimentum. Quisque porttitor ut nisi at cursus.</p>
+
+<h2 id='schnapsum'>Schnapsum</h2>
+
+<p>Integer sit amet lorem lacinia, euismod dui at, rutrum diam. Mauris euismod, diam ut sollicitudin feugiat, ipsum lacus adipiscing tortor, non volutpat odio neque nec tortor. Nam sagittis turpis nulla, et porttitor enim euismod tincidunt. Vestibulum pretium consectetur ligula, sed ultrices neque consequat et. Mauris blandit libero orci, vel rutrum libero bibendum eu. Integer quis tempus nisi. Phasellus ultrices nec nisi non rutrum. Sed auctor purus eu posuere egestas. Duis ultrices mi quis lacus congue, sed tincidunt est congue. Donec tempus nunc quis rutrum tincidunt. Integer magna enim, accumsan id tellus at, iaculis consequat dui. Maecenas tempus diam ut hendrerit cursus.</p>
+	</div>
+	<br/>
+</div> 
+
+
+<script id="titleTpl" type="text/html">
+	<h1> {{name}} </h1> 
+</script>
+
+<script id="noInfoTpl" type="text/html">
+	<h1> {{name}} </h1> 
+	<p>Aucune information n&#39;est disponible</p>
+</script>
+
+<script id="contentTpl" type="text/html">
+	<h1> {{name}} </h1> 
+	<div id="content"> 
+	    <div class="images"/>  
+	    <div id="text"></div>
+	    <div class="link"><a href="http://fr.wikipedia.org/wiki/{{castleId}}">Lire la suite sur Wikipédia</a></div>
+	</div>
+</script>
+
+<script id="imagesTpl" type="text/html">
+	{{#images}}
+	<div class="image">
+	    <img alt="{{alt}}" src="http://res.cloudinary.com/diy8beggy/image/upload/c_lfill,w_150,h_150/{{castleId}}_{{index}}_{{picId}}.png" class="img-polaroid" style="margin: auto;display: inline-block;">
+	</div>
+	{{/images}}
+	<div style="clear: both"/>
+</script>
+
+
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/vendor/modernizr-latest.js"></script>
+<script src='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.uncompressed.js'></script>
+<script src="js/vendor/leaflet.markercluster-src.js"></script>
+<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.js"></script> -->
+<script src="js/vendor/ICanHaz.min.js"></script> 
+<script src="js/map.js"></script>
+<script type="text/javascript">
+      // Google Analytics
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-40685997-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+</body>
+</html>
